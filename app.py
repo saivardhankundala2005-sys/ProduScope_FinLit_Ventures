@@ -10,21 +10,30 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS to eliminate Streamlit padding
+# Strip all Streamlit default headers, footers, paddings, and iframe borders
 st.markdown("""
 <style>
+    /* Remove padding around main container */
     .main .block-container {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
     }
+    /* Hide Streamlit header & footer */
     header[data-testid="stHeader"] {
-        display: none;
+        display: none !important;
     }
     footer {
-        display: none;
+        display: none !important;
+    }
+    /* Ensure component iframe takes full width and no border */
+    iframe {
+        width: 100% !important;
+        border: none !important;
+    }
+    /* Set body background to match app background */
+    .stApp {
+        background-color: #F2F4F6 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -40,7 +49,7 @@ def get_bundled_html():
     with open(dist_index, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # Inline CSS files
+    # Inline CSS & JS files
     if os.path.exists(assets_dir):
         css_blocks = []
         js_blocks = []
@@ -54,7 +63,7 @@ def get_bundled_html():
                 with open(fpath, "r", encoding="utf-8") as js_f:
                     js_blocks.append(js_f.read())
 
-        # Strip existing external link and script tags to avoid 404s
+        # Remove existing external asset link/script tags to prevent 404s
         html = re.sub(r'<link[^>]*href=["\']/assets/[^"\']*["\'][^>]*>', '', html)
         html = re.sub(r'<script[^>]*src=["\']/assets/[^"\']*["\'][^>]*></script>', '', html)
 
@@ -73,6 +82,7 @@ def get_bundled_html():
 html_payload = get_bundled_html()
 
 if html_payload:
-    components.html(html_payload, height=920, scrolling=True)
+    # Set height to 1100 to give full-height seamless viewing without double scrollbars
+    components.html(html_payload, height=1100, scrolling=True)
 else:
     st.error("Application build folder `dist/` not found. Please verify repo assets.")
