@@ -1,0 +1,35 @@
+[
+  {
+    "code": 118989,
+    "name": "HDFC Mid-Cap Opportunities Fund - Direct - Growth",
+    "shortName": "HDFC Mid-Cap Opportunities",
+    "category": "Mid-Cap",
+    "isDemo": true,
+    "asOfDate": "2025-02-24",
+    "asOfNav": 184.08,
+    "peak12m": 214.13,
+    "drawdownPct": 14.03
+  },
+  {
+    "code": 119063,
+    "name": "HDFC Flexi Cap Fund - Direct - Growth",
+    "shortName": "HDFC Flexi Cap",
+    "category": "Flexi-Cap",
+    "isDemo": false,
+    "asOfDate": "2025-03-12",
+    "asOfNav": 216.59,
+    "peak12m": 251.96,
+    "drawdownPct": 14.04
+  },
+  {
+    "code": 120716,
+    "name": "UTI Nifty 50 Index Fund - Direct - Growth",
+    "shortName": "UTI Nifty 50 Index",
+    "category": "Nifty 50 Index",
+    "isDemo": false,
+    "asOfDate": "2025-03-12",
+    "asOfNav": 155.67,
+    "peak12m": 181.06,
+    "drawdownPct": 14.02
+  }
+]

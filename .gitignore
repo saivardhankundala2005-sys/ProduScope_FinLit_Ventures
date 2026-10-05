@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+data/raw/
+*.parquet
+*.log
+.DS_Store
+scratch/
+.env
+.env.local
